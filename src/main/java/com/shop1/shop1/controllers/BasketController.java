@@ -29,10 +29,6 @@ public class BasketController {
     @RequestMapping("/")
     public String allGoods(Model model, HttpSession httpSession) {
         Card card = (Card) httpSession.getAttribute("goods");
-        /*ArrayList<Good> goods = new ArrayList<Good>();
-        for (int i=0;i<card.getList().size();i++){
-            goods.add(goods.size(),goodService.findGood(card.getList().get(i)));
-        }*/
         model.addAttribute("goods",card);
         model.addAttribute("login", httpSession.getAttribute("login"));
         return "basket";
