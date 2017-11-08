@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Developer</title>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div class="user">
+    <form th:action="@{/user/login}"  enctype="multipart/form-data">
+        <input type="submit" value="Login" name="button"/>
+    </form>
+    <form class="user--sign" th:action="@{/user/signUp}"  enctype="multipart/form-data">
+        <input type="submit" value="Sign Up" name="button"/>
+    </form>
+
+</div>
+
+<div></div>
+<div class="grid">
+    <tr th:each="good : ${goods}">
+            <span class="grid--item">
+                <img src="http://www.pastahut.club/files/catalog/big/%D0%BF%D0%B8%D1%86%D1%86%D0%B0-12-1200x1200.jpg"/>
+                <div class="name" th:text="${good.name}"></div>
+                <div class="description" th:text="${good.description}"></div>
+                <div class="description" th:text="${good.price}"></div>
+            </span>
+    </tr>
+</div>
+</body>
+</html>

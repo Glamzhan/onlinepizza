@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Developer</title>
+    <link type="text/css" rel="stylesheet" href="../style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div class="user">
+    <form th:action="@{/user/login}"  enctype="multipart/form-data">
+        <input type="submit" value="Login" name="button"/>
+    </form>
+    <form class="user--sign" th:action="@{/user/signUp}"  enctype="multipart/form-data">
+        <input type="submit" value="Sign Up" name="button"/>
+    </form>
+    <form class="basket" th:action="@{/basket/}"  enctype="multipart/form-data">
+        <input type="image" src="https://www.akon.com.ua/images/basket.png" name="button" />
+    </form>
+    <span class="user--name" th:text="${userName}"></span>
+</div>
+    <div class="grid">
+        <tr th:each="good : ${goods}">
+            <span class="grid--item">
+                <img src="http://www.pastahut.club/files/catalog/big/%D0%BF%D0%B8%D1%86%D1%86%D0%B0-12-1200x1200.jpg"/>
+                <div class="name" th:text="${good.name}"></div>
+                <div class="description" th:text="${good.description}"></div>
+                <div class="description" th:text="${good.price}"></div>
+                <div th:if="${admin}" th:text="${good.status}"></div>
+                <form th:if="!${admin}" th:action="@{/good/allGoods/order}" method="post" enctype="multipart/form-data">
+                    <div class="id">
+                        Name: <input name="id" th:value="${good.id}" />
+                    </div>
+                    <input type="submit" value="В заказ" name="button"/>
+                </form>
+                <form th:if="${admin}" th:action="@{/good/allGoods/delete}" method="post" enctype="multipart/form-data">
+                    Name: <input name="id" th:value="${good.id}" />
+                    <input type="submit" value="Удалить" name="button"/>
+                </form>
+                <form th:if="${admin}" th:action="@{/good/allGoods/resstablish}" method="post" enctype="multipart/form-data">
+                    Name: <input name="id" th:value="${good.id}" />
+                    <input type="submit" value="Восстановить" name="button"/>
+                </form>
+                <div></div>
+            </span>
+        </tr>
+    </div>
+<div class="user" th:if="${admin}">
+    <form th:action="@{/basket/allOrders}"  enctype="multipart/form-data">
+        <input type="submit" value="Корзины" name="button"/>
+    </form>
+    <form th:action="@{/good/addGood}"  enctype="multipart/form-data">
+        <input type="submit" value="Добавить товар" name="button"/>
+    </form>
+    <form th:action="@{/ingredient/}"  enctype="multipart/form-data">
+        <input type="submit" value="Добавить ингредиент" name="button"/>
+    </form>
+</div>
+</body>
+</html>

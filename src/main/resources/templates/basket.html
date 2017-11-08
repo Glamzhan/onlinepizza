@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Basket</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<tr th:each="good : ${goods.list}">
+    <td th:text="${good.name}"></td>
+    <td th:text="${good.description}"></td>
+    <td th:text="${good.price}"></td>
+    <div></div>
+</tr>
+<form th:action="@{/basket/saveBasket}" method="post" enctype="multipart/form-data">
+    <input type="submit" value="save basket" name="button"/>
+</form>
+</body>
+</html>

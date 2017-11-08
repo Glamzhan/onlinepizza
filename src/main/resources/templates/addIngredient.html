@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ingredient</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<tr th:each="ingredient : ${ingredients}">
+    <td th:text="${ingredient.name}"></td>
+    <td th:text="${ingredient.status}"></td>
+    <form th:action="@{/ingredient/delete}" method="post" enctype="multipart/form-data">
+        Id: <input name="id" th:value="${ingredient.id}" />
+        <input type="submit" value="Удалить" name="button"/>
+    </form>
+    <form th:action="@{/ingredient/resstablish}" method="post" enctype="multipart/form-data">
+        Id: <input name="id" th:value="${ingredient.id}" />
+        <input type="submit" value="Восстановить" name="button"/>
+    </form>
+    <div></div>
+</tr>
+
+<form th:action="@{/ingredient/addIngredient}" method="post" enctype="multipart/form-data">
+    <div>
+        Name: <input name="name" />
+    </div>
+    <div>
+        <input type="submit" value="Добавить Ингредиент" name="button"/>
+    </div>
+</form>
+<form th:action="@{/good/allGoods}"  enctype="multipart/form-data">
+    <input type="submit" value="Все товары" name="button"/>
+</form>
+</body>
+</html>

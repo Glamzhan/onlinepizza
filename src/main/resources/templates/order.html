@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<tr th:each="order : ${goods}">
+    <div th:text="${order.user.name}"></div>
+    <div th:text="${order.status}"></div>
+    <tr th:each="good : ${order.goods}">
+        <td th:text="${good.name}"></td>
+        <td th:text="${good.description}"></td>
+        <td th:text="${good.price}"></td>
+        <div></div>
+    </tr>
+    <form th:action="@{/basket/allOrders/resstablish}" method="post" enctype="multipart/form-data">
+        Name: <input name="id" th:value="${order.id}" />
+        <input type="submit" value="Восстановить" name="button"/>
+    </form>
+    <form th:action="@{/basket/allOrders/delete}" method="post" enctype="multipart/form-data">
+        Name: <input name="id" th:value="${order.id}" />
+        <input type="submit" value="Удалить" name="button"/>
+    </form>
+    <div></div>
+</tr>
+<div class="user">
+    <form th:action="@{/good/allGoods}"  enctype="multipart/form-data">
+        <input type="submit" value="Все товары" name="button"/>
+    </form>
+</div>
+</body>
+</html>

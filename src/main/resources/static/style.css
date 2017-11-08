@@ -1,0 +1,39 @@
+.user{
+    background-color: gray;
+    display: flex;
+    flex-flow: wrap;
+    padding: 20px;
+}
+    .user--sign{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .user--name{
+        margin-left: calc(100% - 200px);
+    }
+.id{
+    display: none;
+}
+.grid{
+    display: flex;
+    flex-flow: wrap;
+    padding: 20px;
+}
+    .grid--item{
+        margin-left: 10px;
+    }
+        .grid--item img{
+            width: 200px;
+        }
+            .name{
+                font-weight: bold;
+            }
+            .description{
+                color: gray;
+            }
+.basket{
+
+}
+    .basket input{
+        height: 30px;
+    }

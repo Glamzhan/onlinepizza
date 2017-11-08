@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Developer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form th:action="@{/good/addedGood}" method="post" enctype="multipart/form-data">
+        <tr th:each="ingredient : ${ingredients}">
+            <input th:value="${ingredient.id}" type="checkbox" name="checkedIngredients" th:text="${ingredient.name}"/>
+            <div></div>
+        </tr>
+        <div>
+            Name: <input name="name" />
+        </div>
+        <div>
+            Description: <input name="description" />
+        </div>
+        <div>
+            Price: <input name="price" />
+        </div>
+        <div>
+            Size: <input name="size" />
+        </div>
+        <div>
+            <input type="submit" value="Create good" name="button"/>
+        </div>
+    </form>
+
+    <form th:action="@{/good/allGoods}"  enctype="multipart/form-data">
+        <input type="submit" value="Все товары" name="button"/>
+    </form>
+
+</body>
+</html>
